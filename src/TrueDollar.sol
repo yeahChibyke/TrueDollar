@@ -13,7 +13,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  * Relative Stability: Anchored to the USD
  * @notice This contract is just the ERC20 implementation of the TrueDollar stablecoin. It will be governed by the TrueEngine.
  */
-
 contract TrueDollar is ERC20, ERC20Burnable, Ownable {
     /* Errors */
 
@@ -23,9 +22,7 @@ contract TrueDollar is ERC20, ERC20Burnable, Ownable {
 
     /* Constructor */
 
-    constructor(
-        address TrueOwner
-    ) ERC20("TrueDollar", "TD$") Ownable(TrueOwner) {}
+    constructor(address TrueOwner) ERC20("TrueDollar", "TD$") Ownable(TrueOwner) {}
 
     /* Functions */
 
@@ -40,10 +37,7 @@ contract TrueDollar is ERC20, ERC20Burnable, Ownable {
         super.burn(_amount);
     }
 
-    function mint(
-        address _to,
-        uint256 _amount
-    ) external onlyOwner returns (bool) {
+    function mint(address _to, uint256 _amount) external onlyOwner returns (bool) {
         if (_to == address(0)) {
             revert TrueDollar__AddressNotValid();
         }
